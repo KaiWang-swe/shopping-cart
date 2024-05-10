@@ -122,7 +122,6 @@ const removeProductFromCart = function (productId) {
 
   // Error handling
   if (!cart.includes(product)) {
-    console.log(`There is no ${product.name} in the cart!`)
     return;
   };
 
