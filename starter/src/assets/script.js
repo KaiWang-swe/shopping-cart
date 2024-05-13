@@ -57,7 +57,7 @@ let cart = [];
   - if the product is not already in the cart, add it to the cart
 */
 const addProductToCart = function (productId) {
-  const product = products.find(product => product.productId === productId);
+  const product = getProductbyId(productId);
 
   // Error handling
   if (!product) {
@@ -70,13 +70,16 @@ const addProductToCart = function (productId) {
   product.quantity++;
 };
 
+const getProductbyId = function (productId) {
+  return products.find(product => product.productId === productId);
+}
 
 /* Create a function named increaseQuantity that takes in the productId as an argument
   - increaseQuantity should get the correct product based on the productId
   - increaseQuantity should then increase the product's quantity
 */
 const increaseQuantity = function (productId) {
-  const product = products.find(product => product.productId === productId);
+  const product = getProductbyId(productId);
 
   // Error handling
   if (!product) {
@@ -93,8 +96,7 @@ const increaseQuantity = function (productId) {
   - if the function decreases the quantity to 0, the product is removed from the cart
 */
 const decreaseQuantity = function (productId) {
-  const product = products.find(product => product.productId === productId);
-
+  const product = getProductbyId(productId);
   // Error handling
   if (!product) {
     throw new Error('No such product!');
@@ -118,7 +120,7 @@ const decreaseQuantity = function (productId) {
   - removeProductFromCart should remove the product from the cart
 */
 const removeProductFromCart = function (productId) {
-  const product = products.find(product => product.productId === productId);
+  const product = getProductbyId(productId);
 
   // Error handling
   if (!cart.includes(product)) {
